@@ -1,17 +1,79 @@
 {
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/me/me",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "SVW云书屋"
 			}
+		},
+		{
+			"path": "pages/near/near",
+			"style": {
+				"navigationBarTitleText": "SVW云书屋"
+			}
+		},
+		{
+			"path": "pages/searchbook/searchbook",
+			"style": {
+				"navigationBarTitleText": "SVW云书屋"
+			}
+		}, {
+			"path": "pages/addbookshelf/addbookshelf",
+			"style": {
+				"navigationBarTitleText": "SVW云书屋",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/allshelfs/allshelfs",
+			"style": {
+				"navigationBarTitleText": "SVW云书屋",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/bookshelf/bookshelf",
+			"style": {
+				"navigationBarTitleText": "书架详情",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	],
 	"globalStyle": {
-		"navigationStyle":"custom",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#8a8a8a",
+		"selectedColor": "#f37b1d",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/me/me",
+			"iconPath": "static/icons/me.png",
+			"selectedIconPath": "static/icons/me-sel.png",
+			"text": "我的书架"
+		}, {
+			"pagePath": "pages/near/near",
+			"iconPath": "static/icons/near.png",
+			"selectedIconPath": "static/icons/near-sel.png",
+			"text": "附件书架"
+		}, {
+			"pagePath": "pages/searchbook/searchbook",
+			"iconPath": "static/icons/book.png",
+			"selectedIconPath": "static/icons/book-sel.png",
+			"text": "搜索书籍"
+		}, {
+			"pagePath": "pages/allshelfs/allshelfs",
+			"iconPath": "static/icons/shelf.png",
+			"selectedIconPath": "static/icons/shelf-sel.png",
+			"text": "所有书架"
+		}]
 	}
 }

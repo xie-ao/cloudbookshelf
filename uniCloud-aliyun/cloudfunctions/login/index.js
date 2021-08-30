@@ -1,14 +1,13 @@
 'use strict';
 const {
 	APPID,
-	APPSECRET
+	APPSECRET,
+	getToken
 } = require('wx-common')
 
 
 exports.main = async (event, context) => {
-	//event为客户端上传的参数
-	console.log('event : ', event)
-	// 
+	const db = uniCloud.database()
 	const {
 		code
 	} = event
@@ -17,6 +16,33 @@ exports.main = async (event, context) => {
 			dataType: 'json'
 		}
 	)
+	const openId = res.data.openid
+	let userInfo
+	const dbRes = await db.collection("users").where({
+		openId
+	}).get()
+	if (dbRes.affectedDocs <= 0) {
+		userInfo = {
+			nickName: "",
+			avatarUrl: "",
+			gender: 0,
+			country: "",
+			province: "",
+			city: ""
+		}
+		await db.collection('users').add({
+			openId,
+			...userInfo
+		})
+	} else {
+		userInfo = dbRes.data[0]
+		delete userInfo['openId']
+	}
+	const token = getToken(openId)
+	// userInfo['token'] = token
 	//返回数据给客户端
-	return res
+	return {
+		userInfo,
+		token
+	}
 };
